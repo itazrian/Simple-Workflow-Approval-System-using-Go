@@ -1,0 +1,230 @@
+{
+  "info": {
+    "_postman_id": "72f6e8e2-599c-4491-a3f6-0c5c43dd180a",
+    "name": "Medela 1. Workflow Approval API (Echo + MySQL)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3021851",
+    "_collection_link": "https://go.postman.co/collection/3021851-72f6e8e2-599c-4491-a3f6-0c5c43dd180a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Workflow",
+      "item": [
+        {
+          "name": "Create Workflow",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Purchase Approval 3\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workflows",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workflows"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Workflows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workflows",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workflows"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Workflow By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workflows/{{workflow_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workflows",
+                "{{workflow_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Workflow Steps",
+      "item": [
+        {
+          "name": "Create Workflow Step",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"level\": 1,\n  \"actor\": \"Staff\",\n  \"min_amount\": 200000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/workflows/{{workflow_id}}/steps",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workflows",
+                "{{workflow_id}}",
+                "steps"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Workflow Steps",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workflows/{{workflow_id}}/steps",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workflows",
+                "{{workflow_id}}",
+                "steps"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Requests",
+      "item": [
+        {
+          "name": "Create Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workflow_id\": \"{{workflow_id}}\",\n  \"amount\": 1500000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Request By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/requests/{{request_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "requests",
+                "{{request_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Approve Request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/requests/{{request_id}}/approve",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "requests",
+                "{{request_id}}",
+                "approve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reject Request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/requests/{{request_id}}/reject",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "requests",
+                "{{request_id}}",
+                "reject"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "workflow_id",
+      "value": "wf-001"
+    },
+    {
+      "key": "request_id",
+      "value": "req-001"
+    }
+  ]
+}

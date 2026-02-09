@@ -8,7 +8,7 @@ import (
 )
 
 func InitDB() *gorm.DB {
-	dsn := "root:@tcp(127.0.0.1:3306)/tes_medela_030226?parseTime=true"
+	dsn := "root:@tcp(127.0.0.1:3306)/db_workflow?parseTime=true"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
